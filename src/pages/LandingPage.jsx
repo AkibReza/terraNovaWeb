@@ -10,6 +10,17 @@ import {
   User,
   X,
   CheckCircle,
+  AlertTriangle,
+  Zap,
+  Brain,
+  MessageSquare,
+  Database,
+  Target,
+  Shield,
+  Clock,
+  Star,
+  TrendingUp,
+  ArrowRight,
 } from "lucide-react";
 
 import { db } from "../config/firebase";
@@ -86,111 +97,222 @@ const LandingPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/5 rounded-full blur-2xl animate-pulse delay-500"></div>
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 right-20 w-4 h-4 bg-cyan-400/30 rotate-45 animate-bounce delay-300"></div>
+        <div className="absolute bottom-32 left-16 w-6 h-6 bg-purple-400/20 rounded-full animate-bounce delay-700"></div>
+        <div className="absolute top-40 left-1/3 w-3 h-3 bg-pink-400/40 rotate-45 animate-bounce delay-1000"></div>
+      </div>
 
-        <div className="relative z-10 container mx-auto px-6 py-20">
-          {/* Navigation */}
-          <nav className="flex justify-between items-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-2"
-            >
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                <Home className="w-5 h-5 text-white" />
-              </div>
+      <div className="relative z-10 container mx-auto px-6 py-8 h-screen flex flex-col">
+        {/* Navigation */}
+        <nav className="flex justify-between items-center mb-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center space-x-3"
+          >
+            <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+              <Home className="w-6 h-6 text-white" />
+            </div>
+            <div>
               <span className="text-2xl font-bold text-white">TerraNova</span>
-            </motion.div>
+              <div className="text-xs text-purple-300 font-medium">
+                AI-Powered Real Estate
+              </div>
+            </div>
+          </motion.div>
 
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2"
+          >
+            <MapPin className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm text-gray-200 font-medium">
+              Dhaka, Bangladesh
+            </span>
+          </motion.div>
+        </nav>
+
+        {/* Main Content Grid */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Problem & Solution */}
+          <div className="space-y-8">
+            {/* Problem Statement */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-1 text-gray-300"
-            >
-              <MapPin className="w-4 h-4" />
-              <span className="text-sm">Dhaka, Bangladesh</span>
-            </motion.div>
-          </nav>
-
-          {/* Hero Content */}
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight"
+              className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6 backdrop-blur-sm"
             >
-              Find Your Perfect Home in{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-                Dhaka
-              </span>{" "}
-              with AI
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-red-500/20 rounded-lg flex items-center justify-center">
+                  <AlertTriangle className="w-5 h-5 text-red-400" />
+                </div>
+                <h3 className="text-lg font-bold text-red-300">The Problem</h3>
+              </div>
+              <p className="text-gray-300 leading-relaxed">
+                Finding the perfect home in Dhaka is like searching for a needle
+                in a haystack. Traditional property searches are time-consuming,
+                overwhelming, and often miss your exact preferences.
+              </p>
+            </motion.div>
+
+            {/* Solution Statement */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-green-500/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur-sm"
+            >
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-8 h-8 bg-green-500/20 rounded-lg flex items-center justify-center">
+                  <Zap className="w-5 h-5 text-green-400" />
+                </div>
+                <h3 className="text-lg font-bold text-green-300">
+                  Our Solution
+                </h3>
+              </div>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                TerraNova uses{" "}
+                <strong className="text-white">
+                  advanced AI and machine learning
+                </strong>{" "}
+                to understand exactly what you want. Just describe your dream
+                home in plain English, and our K-Nearest Neighbor algorithm
+                instantly matches you with the most relevant properties.
+              </p>
+              <div className="flex items-center space-x-2 text-sm text-green-400">
+                <Brain className="w-4 h-4" />
+                <span>Powered by Gemini AI + Custom ML Models</span>
+              </div>
+            </motion.div>
+
+            {/* Tech Features */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                <Database className="w-6 h-6 text-cyan-400 mx-auto mb-2" />
+                <div className="text-sm font-semibold text-white">
+                  Smart Dataset
+                </div>
+                <div className="text-xs text-gray-400">
+                  Self-improving algorithm
+                </div>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                <Target className="w-6 h-6 text-purple-400 mx-auto mb-2" />
+                <div className="text-sm font-semibold text-white">
+                  99% Accuracy
+                </div>
+                <div className="text-xs text-gray-400">Precision matching</div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column - Hero Content */}
+          <div className="text-center lg:text-left">
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              Find Your Perfect Home with{" "}
+              <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                AI Magic
+              </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed"
+              transition={{ delay: 0.5 }}
+              className="text-lg text-gray-300 mb-8 leading-relaxed"
             >
-              Tell us what you're looking for — TerraNova's AI will find it for
-              you.
+              Stop endless scrolling through irrelevant listings. Just tell
+              TerraNova what you want in natural language, and watch AI find
+              your dream home instantly.
             </motion.p>
+
+            {/* Example Query */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="bg-white/10 border border-white/20 rounded-xl p-4 mb-8 backdrop-blur-sm"
+            >
+              <div className="flex items-center space-x-2 mb-2">
+                <MessageSquare className="w-4 h-4 text-cyan-400" />
+                <span className="text-sm font-medium text-cyan-300">
+                  Try saying:
+                </span>
+              </div>
+              <p className="text-white font-medium italic">
+                "I need a 3-bedroom apartment in Dhanmondi under 25,000 taka
+                with parking and a gym nearby"
+              </p>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              transition={{ delay: 0.9 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCTAClick("buyer")}
-                className="group bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center space-x-3 min-w-[200px]"
+                className="group bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-purple-500/25 transition-all duration-300 flex items-center justify-center space-x-3"
               >
                 <Search className="w-5 h-5" />
                 <span>Find My Home</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleCTAClick("seller")}
-                className="group bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center space-x-3 min-w-[200px]"
+                className="group bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-500 hover:to-cyan-600 text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center justify-center space-x-3"
               >
                 <Plus className="w-5 h-5" />
-                <span>List My Property</span>
+                <span>List Property</span>
+                <TrendingUp className="w-4 h-4 group-hover:scale-110 transition-transform" />
               </motion.button>
             </motion.div>
 
-            {/* Feature Pills */}
+            {/* Trust Indicators */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-wrap justify-center gap-4 mt-12"
+              transition={{ delay: 1.1 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 text-sm text-gray-400"
             >
-              {[
-                "AI-Powered Search",
-                "Real-time Data",
-                "Expert Recommendations",
-              ].map((feature, index) => (
-                <div
-                  key={feature}
-                  className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm text-white/80"
-                >
-                  {feature}
-                </div>
-              ))}
+              <div className="flex items-center space-x-2">
+                <Shield className="w-4 h-4 text-green-400" />
+                <span>Secure & Private</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Clock className="w-4 h-4 text-blue-400" />
+                <span>Instant Results</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Star className="w-4 h-4 text-yellow-400" />
+                <span>AI-Powered</span>
+              </div>
             </motion.div>
           </div>
         </div>
