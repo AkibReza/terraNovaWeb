@@ -95,21 +95,20 @@ const LandingPage = () => {
     setFormData({ name: "", email: "", preference: "" });
     setUserType("");
   };
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-x-hidden">
       {/* Animated Background Particles */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-pink-500/5 rounded-full blur-2xl animate-pulse delay-500"></div>
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-48 sm:w-64 h-48 sm:h-64 bg-pink-500/5 rounded-full blur-2xl animate-pulse delay-500 -translate-x-1/2 -translate-y-1/2"></div>
         {/* Floating geometric shapes */}
-        <div className="absolute top-20 right-20 w-4 h-4 bg-cyan-400/30 rotate-45 animate-bounce delay-300"></div>
-        <div className="absolute bottom-32 left-16 w-6 h-6 bg-purple-400/20 rounded-full animate-bounce delay-700"></div>
+        <div className="absolute top-20 right-4 sm:right-20 w-4 h-4 bg-cyan-400/30 rotate-45 animate-bounce delay-300"></div>
+        <div className="absolute bottom-32 left-4 sm:left-16 w-6 h-6 bg-purple-400/20 rounded-full animate-bounce delay-700"></div>
         <div className="absolute top-40 left-1/3 w-3 h-3 bg-pink-400/40 rotate-45 animate-bounce delay-1000"></div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-6 py-8 h-screen flex flex-col">
+      <div className="relative z-10 container mx-auto px-6 py-8 min-h-screen lg:h-screen flex flex-col">
         {/* Navigation */}
         <nav className="flex justify-between items-center mb-8">
           <motion.div
@@ -143,7 +142,7 @@ const LandingPage = () => {
         {/* Main Content Grid */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Problem & Solution */}
-          <div className="space-y-8">
+          <div className="space-y-8 order-2 lg:order-1">
             {/* Problem Statement */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -221,7 +220,7 @@ const LandingPage = () => {
           </div>
 
           {/* Right Column - Hero Content */}
-          <div className="text-center lg:text-left">
+          <div className="text-center lg:text-left order-1 lg:order-2">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
